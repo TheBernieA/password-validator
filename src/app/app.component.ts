@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from './custom-validators';
 
@@ -7,22 +7,25 @@ import { CustomValidators } from './custom-validators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  public frmSignup: FormGroup;
+export class AppComponent implements OnInit {
+  public frmSignup!: FormGroup;
 
   constructor(private fb: FormBuilder) {
+  }
+
+  ngOnInit(): void {
     this.frmSignup = this.createSignupForm();
   }
 
   createSignupForm(): FormGroup {
     return this.fb.group(
       {
-        // email: [
-        //   null,
-        //   Validators.compose([Validators.email, Validators.required])
-        // ],
+        email: [
+          '',
+          Validators.compose([Validators.email, Validators.required])
+        ],
         password: [
-          null,
+          '',
           Validators.compose([
             Validators.required,
             // check whether the entered password has a number
@@ -47,11 +50,12 @@ export class AppComponent {
             Validators.minLength(8)
           ])
         ],
-        confirmPassword: [null, Validators.compose([Validators.required])]
+        confirmPassword: ['', Validators.compose([Validators.required])]
       },
       {
         // check whether our password and confirm password match
         validator: CustomValidators.passwordMatchValidator
+
       }
     );
   }

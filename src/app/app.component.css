@@ -1,11 +1,26 @@
 .is-invalid {
   border-left: solid 6px red;
 }
-
 .material-icons {
   display: inline-flex;
   vertical-align: middle;
 }
 label {
   display: block;
+}
+.is-valid {
+  border-left: solid 6px green;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  background-image: none;
+}
+
+.showIcon {
+  display: none;
+}
+
+.hideIcon {
+  display: inline-block;
 }
