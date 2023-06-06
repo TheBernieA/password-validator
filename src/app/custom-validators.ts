@@ -30,7 +30,7 @@ export class CustomValidators {
       const confirmPassword: string = confirmPasswordControl.value
 
       // compare is the password math
-      if (password !== confirmPassword) {
+      if (confirmPassword !== '' && password !== confirmPassword) {
         // if they don't match, set an error in our confirmPassword form control
         confirmPasswordControl.setErrors({ NoPassswordMatch: true });
         // check if password contains the word password
@@ -38,7 +38,7 @@ export class CustomValidators {
           passwordControl.setErrors({ ContainWordPassword: true })
         }
         // check if password contains words from the email with symbol or without symbols
-        else if (email !== '' && password.toLowerCase().includes(emailCharacterControl.toLowerCase()) || password.toLowerCase().includes(emailControl.toLowerCase())) {
+        else if (email !== '' && (password.toLowerCase().includes(emailCharacterControl.toLowerCase()) || password.toLowerCase().includes(emailControl.toLowerCase()))) {
           // console.log('has value', emailControl);
           passwordControl.setErrors({ HasEmailCharacters: true })
         }
