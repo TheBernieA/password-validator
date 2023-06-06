@@ -26,7 +26,7 @@
         !frmSignup.controls['password'].touched ?'' :
         frmSignup.controls['password'].invalid ? 'is-invalid' : ''">
             <label class="text-danger"
-              *ngIf="frmSignup.controls['password'].touched &&frmSignup.controls['password'].hasError('ContainWordPassword')"><strong>Password
+              *ngIf="frmSignup.controls['password'].hasError('ContainWordPassword')"><strong>Password
                 cannot contain the word "Password"</strong></label>
             <label class="text-danger"
               *ngIf="frmSignup.controls['password'].hasError('HasEmailCharacters')"><strong>Password

@@ -30,7 +30,7 @@ export class CustomValidators {
       const confirmPassword: string = confirmPasswordControl.value
 
       // compare is the password math
-      if (confirmPassword !== '' && password !== confirmPassword) {
+      if (confirmPassword !== '' && confirmPassword !== password) {
         // if they don't match, set an error in our confirmPassword form control
         confirmPasswordControl.setErrors({ NoPassswordMatch: true });
         // check if password contains the word password
